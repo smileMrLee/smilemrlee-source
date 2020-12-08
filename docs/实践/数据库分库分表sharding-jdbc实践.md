@@ -1,4 +1,8 @@
-### 开始前必读
+# 数据库分库分表sharding-jdbc实践
+
+# 开始前必读
+## github开源地址
+https://github.com/smileMrLee/sharding-jdbc-demo
 
 本项目基于 spring boot + sharding-jdbc + mybatis + mysql搭建，用作测试验证sharding-jdbc 实现数据库分库分表。
 下载启动本项目前，请先执行DDL.sql 初始化数据库。
@@ -8,12 +12,12 @@
 - 启动前，请先修改 mysql 连接信息，确保连接账号密码无误。
 
 
-### 实战
+# 实战
 
 集成sharding-jdbc总共需要以下几步
 
 
-#### 1. pom依赖引入sharding-jdbc 及 mybatis组件包
+## 1. pom依赖引入sharding-jdbc 及 mybatis组件包
 
 
 ```xml
@@ -43,7 +47,7 @@
 		<!-- sharding-jdbc end -->
 ```
 
-#### 2. 配置数据源
+## 2. 配置数据源
 
 
 ```properties
@@ -69,7 +73,7 @@ sharding.jdbc.datasource.test${n}.password=123456
 ```
 
 
-#### 3. 配置数据库database分库策略、表table分表策略
+## 3. 配置数据库database分库策略、表table分表策略
 
 
 ```properties
@@ -88,7 +92,7 @@ sharding.jdbc.config.sharding.tables.t_car.table-strategy.inline.sharding-column
 ```
 
 
-#### 4. 编码实现
+## 4. 编码实现
 
 
 
@@ -104,9 +108,7 @@ sharding.jdbc.config.sharding.tables.t_car.table-strategy.inline.sharding-column
 
 
 
-#### 5. http调用验证
+## 5. http调用验证
    保存车辆信息：http://localhost:8080/car/save  
    查询车辆列表：http://localhost:8080/car/get
 
-#### 6.github开源地址
-https://github.com/smileMrLee/sharding-jdbc-demo

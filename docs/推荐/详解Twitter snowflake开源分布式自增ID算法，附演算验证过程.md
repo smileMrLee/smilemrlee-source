@@ -1,10 +1,12 @@
-### 1.snowflake简介
+### 详解Twitter snowflake开源分布式自增ID算法，附演算验证过程
+
+## 1.snowflake简介
 
 ​        互联网快速发展的今天，分布式应用系统已经见怪不怪，在分布式系统中，我们需要各种各样的ID，既然是ID那么必然是要保证全局唯一，除此之外，不同当业务还需要不同的特性，比如像并发巨大的业务要求ID生成效率高，吞吐大；比如某些银行类业务，需要按每日日期制定交易流水号；又比如我们希望用户的ID是随机的，无序的，纯数字的，且位数长度是小于10位的。等等，不同的业务场景需要的ID特性各不一样，于是，衍生了各种ID生成器，但大多数利用数据库控制ID的生成，性能受数据库并发能力限制，那么有没有一款不需要依赖任何中间件（如数据库，分布式缓存服务等）的ID生成器呢？本着取之于开源，用之于开源的原则，今天，特此介绍Twitter开源的一款分布式自增ID算法snowflake，并附上算法原理推导和演算过程！
 
 <u>snowflake算法是一款本地生成的（ID生成过程不依赖任何中间件，无网络通信），保证ID全局唯一，并且ID总体有序递增，性能每秒生成300w＋。</u>
 
-### 2.snowflake算法原理
+## 2.snowflake算法原理
 
 snowflake生产的ID是一个18位的long型数字，二进制结构表示如下(每部分用-分开):
 0 - 00000000 00000000 00000000 00000000 00000000 0 - 00000 - 00000 - 00000000 0000
@@ -17,7 +19,7 @@ snowflake生产的ID是一个18位的long型数字，二进制结构表示如下
 
 （该节改编自：http://www.cnblogs.com/relucent/p/4955340.html）
 
-### 3.snowflake算法源码（java版）
+## 3.snowflake算法源码（java版）
 
 ```java
 @ToString
@@ -208,7 +210,8 @@ public class SnowflakeIdFactory {
    e.printStackTrace();
   }
 
-### 4.snowflake算法推导和演算过程
+
+## 4.snowflake算法推导和演算过程
 
 > 说明：
 
@@ -232,7 +235,7 @@ public class SnowflakeIdFactory {
 
 end！
 
-参考
+## 参考
 https://github.com/twitter/snowflake
 
 http://www.cnblogs.com/relucent/p/4955340.html 

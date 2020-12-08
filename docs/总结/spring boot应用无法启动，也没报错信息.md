@@ -1,12 +1,12 @@
-### [总结]spring boot应用无法启动，也没报错信息
+# spring boot应用无法启动，也没报错信息
 
-#### 问题描述
+## 问题描述
 
 springboot应用昨天还能正常好好启动，忽然之间就启动不了了，也不报任何错误，只见到控制台输出"Stopping service".这个问题已经连续出现过3次了，这次狠下决心要找出个所以然。
 
 在此，先说下个人经历的前面三次无法启动没有报错。
 
-#### 举例说明
+## 举例说明
 
 第一次：和环境有关
 
@@ -41,7 +41,7 @@ springboot应用昨天还能正常好好启动，忽然之间就启动不了了�
 >
 > 当然，和前面几次一样，控制台，日志文件，没有任何地方有错误信息输出。
 
-#### 排查分析
+## 排查分析
 
  根据下面这篇文章，给出了提示。
 
@@ -53,7 +53,7 @@ springboot应用昨天还能正常好好启动，忽然之间就启动不了了�
 
 
 
-#### 解决方法
+## 解决方法
 
 **解决：**有了上面的灵感，那好办我在main 启动方法中捕捉，自己打印，不就能看出来错误原因了吗？
 
@@ -88,7 +88,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1336) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10
 ```
 
-#### 扩展验证
+## 扩展验证
 
 接下来让我们验证下低版本Spring boot 1.3.x，1.4.x版本，是否会直接在控制台输出错误。
 
